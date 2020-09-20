@@ -1,0 +1,51 @@
+<h1>Héroe <small>Nombre del heroe</small></h1>
+<hr>
+
+<div class="row text-right">
+    <div class="col">
+        <button routerLink="/heroes" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Regresar</button>
+    </div>
+</div>
+
+<div class="row animated fadeIn slow">
+    <div class="col">
+        <form (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="form-group">
+                <label>Firebase ID</label>
+                <input type="text" placeholder="Firebase ID" class="form-control" disabled="disabled" [(ngModel)]="heroe.id" name="id">
+                <small class="text-form text-muted">Este campo es auto-generado</small>
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" placeholder="Nombre del héroe" class="form-control" required [(ngModel)]="heroe.nombre" name="nombre">
+            </div>
+            <div class="form-group">
+                <label>Poder</label>
+                <input type="text" placeholder="Nombre del héroe" class="form-control" [(ngModel)]="heroe.poder" name="poder">
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <br>
+                <button *ngIf="heroe.vivo" (click)="heroe.vivo = false" type="button" class="btn btn-outline-success w-50">
+                    <i class="fa fa-smile-wink"></i>
+                    Vivo
+                </button>
+                <button *ngIf="!heroe.vivo" (click)="heroe.vivo = true" type="button" class="btn btn-outline-danger w-50">
+                    <i class="fas fa-dizzy"></i>
+                    Muerto
+                </button>
+            </div>
+
+            <hr>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
